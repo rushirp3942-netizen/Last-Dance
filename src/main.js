@@ -12,7 +12,6 @@ const state = {
   nudgesEnabled: true,
   currentTracks: [...originalTracks],
   likedTrackIds: new Set(originalTracks.map(t => t.id)),
-  queue: [...originalTracks],          // Active audio playback queue
   
   // Media Playback States
   isPlaying: false,
@@ -141,7 +140,7 @@ function setupEvents() {
       togglePlayback();
     } else {
       // Play first song in list
-      playTrack(state.currentTracks[0], state.currentTracks);
+      playTrack(state.currentTracks[0]);
     }
   });
 
@@ -501,7 +500,7 @@ function renderPlaylistSongs() {
     row.addEventListener("click", (e) => {
       // Don't play if clicking info button
       if (e.target.closest(".info-icon-btn")) return;
-      playTrack(track, state.currentTracks);
+      playTrack(track);
     });
 
     // Info click transparency trigger
@@ -700,12 +699,8 @@ function updateOnboardingPreview(mode) {
 // 7. PLAYBACK COORDINATION & TICKERS
 // ==========================================================================
 
-function playTrack(track, customQueue) {
+function playTrack(track) {
   clearInterval(state.playbackInterval);
-  
-  if (customQueue) {
-    state.queue = customQueue;
-  }
   
   state.currentTrack = track;
   state.isPlaying = true;
@@ -731,9 +726,6 @@ function playTrack(track, customQueue) {
   
   // Update list
   renderPlaylistSongs();
-  if (state.activeScreen === "discovery") {
-    renderDiscoveryFeed();
-  }
   
   // Start clock progress bar
   startTicker();
@@ -766,9 +758,6 @@ function togglePlayback() {
   }
   
   renderPlaylistSongs();
-  if (state.activeScreen === "discovery") {
-    renderDiscoveryFeed();
-  }
 }
 
 function startTicker() {
@@ -793,10 +782,10 @@ function startTicker() {
 }
 
 function playNext() {
-  const currentIndex = state.queue.findIndex(t => t.id === state.currentTrack?.id);
+  const currentIndex = state.currentTracks.findIndex(t => t.id === state.currentTrack?.id);
   
-  // If we reach the end of the queue
-  if (currentIndex === -1 || currentIndex === state.queue.length - 1) {
+  // If we reach the end of the playlist
+  if (currentIndex === state.currentTracks.length - 1) {
     // End playback
     clearInterval(state.playbackInterval);
     state.isPlaying = false;
@@ -810,19 +799,16 @@ function playNext() {
     headerPauseIcon.style.display = "none";
     
     renderPlaylistSongs();
-    if (state.activeScreen === "discovery") {
-      renderDiscoveryFeed();
-    }
     
-    // Display Nudge Card if enabled (only if we completed the main playlist queue)
-    if (state.nudgesEnabled && state.activeScreen === "playlist") {
+    // Display Nudge Card if enabled
+    if (state.nudgesEnabled) {
       showDiscoveryNudgeCard();
     }
     return;
   }
   
-  // Play next track in queue
-  const nextTrack = state.queue[currentIndex + 1];
+  // Play next track
+  const nextTrack = state.currentTracks[currentIndex + 1];
   playTrack(nextTrack);
 }
 
@@ -960,7 +946,7 @@ function renderDiscoveryFeed() {
       row.addEventListener("click", () => {
         const songId = row.dataset.songId;
         const songObj = artist.songs.find(s => s.id === songId);
-        playTrack(songObj, artist.songs);
+        playTrack(songObj);
       });
     });
 

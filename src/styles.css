@@ -19,10 +19,10 @@
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   /* Constants */
-  --mobile-width: 330px;
-  --mobile-height: 710px;
-  --bottom-nav-height: 60px;
-  --mini-player-height: 52px;
+  --mobile-width: 390px;
+  --mobile-height: 844px;
+  --bottom-nav-height: 64px;
+  --mini-player-height: 56px;
   
   /* Easing and Transitions */
   --transition-elastic: cubic-bezier(0.25, 1.25, 0.4, 1);
@@ -57,21 +57,21 @@ body {
   height: var(--mobile-height);
   position: relative;
   background-color: var(--spotify-pure-black);
-  border-radius: 36px;
+  border-radius: 40px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 0 10px #222;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 0 12px #222;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
 }
 
 /* Auto-scale phone mockup on smaller screen heights */
-@media (max-height: 780px) {
+@media (max-height: 880px) {
   .device-container {
     height: calc(100vh - 40px);
-    width: calc((100vh - 40px) * (330 / 710));
-    border-radius: 28px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 0 6px #222;
+    width: calc((100vh - 40px) * (390 / 844));
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 0 8px #222;
   }
   .status-bar {
     height: 36px;
@@ -83,10 +83,10 @@ body {
   }
   .status-bar > div:nth-child(2) {
     /* Shrink the notch proportionally */
-    width: 80px !important;
-    height: 20px !important;
-    border-bottom-left-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
+    width: 90px !important;
+    height: 24px !important;
+    border-bottom-left-radius: 14px !important;
+    border-bottom-right-radius: 14px !important;
   }
 }
 
