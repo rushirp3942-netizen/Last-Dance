@@ -10,7 +10,7 @@
     /* Force onboarding bottom sheet scroll and tight padding */
     #onboarding-sheet-backdrop .bottom-sheet-container {
       max-height: 94% !important;
-      padding: 8px 16px 16px !important;
+      padding: 10px 16px 16px !important;
       overflow-y: auto !important;
     }
     #onboarding-sheet-backdrop .bottom-sheet-header-line {
@@ -20,36 +20,52 @@
       margin-bottom: 2px !important;
     }
     #onboarding-sheet-backdrop .sheet-subtitle {
-      margin-bottom: 8px !important;
+      margin-bottom: 10px !important;
     }
-    /* Force horizontal swipe row for mode chooser */
+    /* Force 2x2 compact grid layout for mode chooser (visible at once, no scroll) */
     #onboarding-sheet-backdrop .mode-cards-grid {
-      display: flex !important;
-      flex-direction: row !important;
-      overflow-x: auto !important;
-      gap: 8px !important;
-      margin-bottom: 8px !important;
-      padding-bottom: 4px !important;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 6px !important;
+      margin-bottom: 10px !important;
+      padding-bottom: 0 !important;
     }
     #onboarding-sheet-backdrop .mode-card {
-      flex: 0 0 106px !important;
-      padding: 8px !important;
-      gap: 4px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      text-align: left !important;
+      padding: 6px 10px !important;
+      background-color: rgba(255, 255, 255, 0.04) !important;
+      border: 1px solid rgba(255, 255, 255, 0.06) !important;
+      border-radius: 6px !important;
+      cursor: pointer !important;
+      display: block !important;
       height: auto !important;
     }
+    #onboarding-sheet-backdrop .mode-card-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      width: 100% !important;
+    }
     #onboarding-sheet-backdrop .mode-card-title {
-      font-size: 12px !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      margin-bottom: 0 !important;
+      color: var(--text-primary) !important;
+    }
+    #onboarding-sheet-backdrop .mode-card.selected .mode-card-title {
+      color: var(--spotify-green) !important;
     }
     #onboarding-sheet-backdrop .mode-card-percentage {
-      font-size: 9px !important;
+      font-size: 8px !important;
       padding: 2px 4px !important;
+      border-radius: 3px !important;
+      background-color: rgba(255,255,255,0.06) !important;
+      color: var(--text-secondary) !important;
+      align-self: center !important;
+      font-weight: 700 !important;
     }
-    #onboarding-sheet-backdrop .mode-card-desc {
-      font-size: 9px !important;
-      line-height: 1.2 !important;
+    #onboarding-sheet-backdrop .mode-card.selected .mode-card-percentage {
+      background-color: rgba(29, 185, 84, 0.15) !important;
+      color: var(--spotify-green) !important;
     }
   </style>
 </head>
@@ -363,30 +379,34 @@
             
             <!-- Safe -->
             <div class="mode-card btn-haptic" data-choice="safe">
-              <span class="mode-card-title">Safe</span>
-              <span class="mode-card-percentage">10% New</span>
-              <p class="mode-card-desc">Mostly familiar songs.</p>
+              <div class="mode-card-header">
+                <span class="mode-card-title">Safe</span>
+                <span class="mode-card-percentage">10% New</span>
+              </div>
             </div>
             
             <!-- Balanced -->
             <div class="mode-card selected btn-haptic" data-choice="balanced">
-              <span class="mode-card-title">Balanced</span>
-              <span class="mode-card-percentage">30% New</span>
-              <p class="mode-card-desc">Default mode.</p>
+              <div class="mode-card-header">
+                <span class="mode-card-title">Balanced</span>
+                <span class="mode-card-percentage">30% New</span>
+              </div>
             </div>
             
             <!-- Adventurous -->
             <div class="mode-card btn-haptic" data-choice="adventurous">
-              <span class="mode-card-title">Adventurous</span>
-              <span class="mode-card-percentage">50% New</span>
-              <p class="mode-card-desc">Familiar & new.</p>
+              <div class="mode-card-header">
+                <span class="mode-card-title">Adventurous</span>
+                <span class="mode-card-percentage">50% New</span>
+              </div>
             </div>
             
             <!-- Explorer -->
             <div class="mode-card btn-haptic" data-choice="explorer">
-              <span class="mode-card-title">Explorer</span>
-              <span class="mode-card-percentage">80% New</span>
-              <p class="mode-card-desc">Hidden gems.</p>
+              <div class="mode-card-header">
+                <span class="mode-card-title">Explorer</span>
+                <span class="mode-card-percentage">80% New</span>
+              </div>
             </div>
             
           </div>
