@@ -167,11 +167,11 @@ function setupEvents() {
   });
 
   // Settings trigger
-  playlistSettingsBtn.addEventListener("click", () => routeTo("settings"));
-  settingsBackBtn.addEventListener("click", () => routeTo("playlist"));
+  if (playlistSettingsBtn) playlistSettingsBtn.addEventListener("click", () => routeTo("settings"));
+  if (settingsBackBtn) settingsBackBtn.addEventListener("click", () => routeTo("playlist"));
   
   // Discovery Back arrow
-  discoveryBackBtn.addEventListener("click", () => routeTo("playlist"));
+  if (discoveryBackBtn) discoveryBackBtn.addEventListener("click", () => routeTo("playlist"));
 
   // Bottom Nav items
   document.getElementById("nav-library-btn").addEventListener("click", () => routeTo("playlist"));
@@ -1002,7 +1002,7 @@ function startClock() {
     h = h % 12;
     h = h ? h : 12;
     const minStr = m < 10 ? "0" + m : m;
-    clockEl.textContent = `${h}:${minStr}`;
+    if (clockEl) clockEl.textContent = `${h}:${minStr}`;
   };
   updateClock();
   setInterval(updateClock, 30000);
