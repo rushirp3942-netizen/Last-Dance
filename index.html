@@ -6,6 +6,52 @@
   <title>Spotify Smart Shuffle 2.0 UX Prototype</title>
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./src/styles.css">
+  <style>
+    /* Force onboarding bottom sheet scroll and tight padding */
+    #onboarding-sheet-backdrop .bottom-sheet-container {
+      max-height: 94% !important;
+      padding: 8px 16px 16px !important;
+      overflow-y: auto !important;
+    }
+    #onboarding-sheet-backdrop .bottom-sheet-header-line {
+      margin-bottom: 8px !important;
+    }
+    #onboarding-sheet-backdrop .sheet-title {
+      margin-bottom: 2px !important;
+    }
+    #onboarding-sheet-backdrop .sheet-subtitle {
+      margin-bottom: 8px !important;
+    }
+    /* Force horizontal swipe row for mode chooser */
+    #onboarding-sheet-backdrop .mode-cards-grid {
+      display: flex !important;
+      flex-direction: row !important;
+      overflow-x: auto !important;
+      gap: 8px !important;
+      margin-bottom: 8px !important;
+      padding-bottom: 4px !important;
+    }
+    #onboarding-sheet-backdrop .mode-card {
+      flex: 0 0 106px !important;
+      padding: 8px !important;
+      gap: 4px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      text-align: left !important;
+      height: auto !important;
+    }
+    #onboarding-sheet-backdrop .mode-card-title {
+      font-size: 12px !important;
+    }
+    #onboarding-sheet-backdrop .mode-card-percentage {
+      font-size: 9px !important;
+      padding: 2px 4px !important;
+    }
+    #onboarding-sheet-backdrop .mode-card-desc {
+      font-size: 9px !important;
+      line-height: 1.2 !important;
+    }
+  </style>
 </head>
 <body>
 

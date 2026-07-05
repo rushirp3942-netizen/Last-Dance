@@ -57,4 +57,4 @@ st.title("Spotify Smart Shuffle 2.0")
 st.write("An interactive high-fidelity UX prototype showcasing discovery mode levels, transparency indicators, and smart recommendations.")
 
 # Embed the deployed GitHub Pages version which handles mobile framing and responsive resizing
-components.iframe("https://rushirp3942-netizen.github.io/Last-Dance/?v=2", height=730, scrolling=False)
+components.iframe("https://rushirp3942-netizen.github.io/Last-Dance/?v=4", height=875, scrolling=False)
