@@ -6,68 +6,6 @@
   <title>Spotify Smart Shuffle 2.0 UX Prototype</title>
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./src/styles.css">
-  <style>
-    /* Force onboarding bottom sheet scroll and tight padding */
-    #onboarding-sheet-backdrop .bottom-sheet-container {
-      max-height: 94% !important;
-      padding: 10px 16px 16px !important;
-      overflow-y: auto !important;
-    }
-    #onboarding-sheet-backdrop .bottom-sheet-header-line {
-      margin-bottom: 8px !important;
-    }
-    #onboarding-sheet-backdrop .sheet-title {
-      margin-bottom: 2px !important;
-    }
-    #onboarding-sheet-backdrop .sheet-subtitle {
-      margin-bottom: 10px !important;
-    }
-    /* Force 2x2 compact grid layout for mode chooser (visible at once, no scroll) */
-    #onboarding-sheet-backdrop .mode-cards-grid {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr !important;
-      gap: 6px !important;
-      margin-bottom: 10px !important;
-      padding-bottom: 0 !important;
-    }
-    #onboarding-sheet-backdrop .mode-card {
-      padding: 6px 10px !important;
-      background-color: rgba(255, 255, 255, 0.04) !important;
-      border: 1px solid rgba(255, 255, 255, 0.06) !important;
-      border-radius: 6px !important;
-      cursor: pointer !important;
-      display: block !important;
-      height: auto !important;
-    }
-    #onboarding-sheet-backdrop .mode-card-header {
-      display: flex !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-      width: 100% !important;
-    }
-    #onboarding-sheet-backdrop .mode-card-title {
-      font-size: 11px !important;
-      font-weight: 700 !important;
-      margin-bottom: 0 !important;
-      color: var(--text-primary) !important;
-    }
-    #onboarding-sheet-backdrop .mode-card.selected .mode-card-title {
-      color: var(--spotify-green) !important;
-    }
-    #onboarding-sheet-backdrop .mode-card-percentage {
-      font-size: 8px !important;
-      padding: 2px 4px !important;
-      border-radius: 3px !important;
-      background-color: rgba(255,255,255,0.06) !important;
-      color: var(--text-secondary) !important;
-      align-self: center !important;
-      font-weight: 700 !important;
-    }
-    #onboarding-sheet-backdrop .mode-card.selected .mode-card-percentage {
-      background-color: rgba(29, 185, 84, 0.15) !important;
-      color: var(--spotify-green) !important;
-    }
-  </style>
 </head>
 <body>
 
@@ -379,55 +317,36 @@
             
             <!-- Safe -->
             <div class="mode-card btn-haptic" data-choice="safe">
-              <div class="mode-card-header">
-                <span class="mode-card-title">Safe</span>
-                <span class="mode-card-percentage">10% New</span>
-              </div>
+              <span class="mode-card-title">Safe</span>
+              <span class="mode-card-percentage">10% New</span>
+              <p class="mode-card-desc">Mostly familiar songs.</p>
+              <p class="mode-card-usecase">Best for: Office, Studying, Driving</p>
             </div>
             
             <!-- Balanced -->
             <div class="mode-card selected btn-haptic" data-choice="balanced">
-              <div class="mode-card-header">
-                <span class="mode-card-title">Balanced</span>
-                <span class="mode-card-percentage">30% New</span>
-              </div>
+              <span class="mode-card-title">Balanced</span>
+              <span class="mode-card-percentage">30% New</span>
+              <p class="mode-card-desc">Default recommendation mode.</p>
+              <p class="mode-card-usecase">Best for: Daily mix, Passive discovery</p>
             </div>
             
             <!-- Adventurous -->
             <div class="mode-card btn-haptic" data-choice="adventurous">
-              <div class="mode-card-header">
-                <span class="mode-card-title">Adventurous</span>
-                <span class="mode-card-percentage">50% New</span>
-              </div>
+              <span class="mode-card-title">Adventurous</span>
+              <span class="mode-card-percentage">50% New</span>
+              <p class="mode-card-desc">Alternate between familiar and new.</p>
+              <p class="mode-card-usecase">Best for: Finding variety, Actively listening</p>
             </div>
             
             <!-- Explorer -->
             <div class="mode-card btn-haptic" data-choice="explorer">
-              <div class="mode-card-header">
-                <span class="mode-card-title">Explorer</span>
-                <span class="mode-card-percentage">80% New</span>
-              </div>
+              <span class="mode-card-title">Explorer</span>
+              <span class="mode-card-percentage">80% New</span>
+              <p class="mode-card-desc">Deep cuts & hidden gems.</p>
+              <p class="mode-card-usecase">Best for: Uncovering indie artists</p>
             </div>
             
-          </div>
-          
-          <!-- Onboarding Live Mode Preview Panel -->
-          <div class="preview-flow-panel" id="onboarding-preview-panel" style="margin-bottom: 12px; padding: 10px; background-color: rgba(255,255,255,0.03);">
-            <h4 class="settings-row-label" id="onboarding-preview-title" style="color: var(--spotify-green); font-size: 12px; margin-bottom: 2px;">Balanced Mode</h4>
-            <p class="settings-row-sublabel" id="onboarding-preview-desc" style="font-size: 9px; margin-bottom: 6px; line-height: 1.2;">70% Familiar, 30% New. One recommendation after every 2–3 familiar songs.</p>
-            
-            <!-- Connection Flow circles diagram -->
-            <div class="preview-flow-visual" id="onboarding-preview-visual" style="margin-bottom: 8px;">
-              <!-- Rendered dynamically -->
-            </div>
-            
-            <!-- Dynamic list of tracks in this mode -->
-            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 6px; margin-top: 6px; text-align: left;">
-              <span style="font-size: 9px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; display: block; margin-bottom: 4px;">Recommended Additions:</span>
-              <div id="onboarding-preview-songs-list" style="display: flex; flex-direction: column; gap: 4px; max-height: 70px; overflow-y: auto;">
-                <!-- Tiny track rows rendered dynamically -->
-              </div>
-            </div>
           </div>
           
           <!-- Start button -->
